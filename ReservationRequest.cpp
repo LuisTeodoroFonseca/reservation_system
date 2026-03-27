@@ -14,3 +14,23 @@ ReservationRequest::ReservationRequest(std::string course_name, std::string week
 
 ReservationRequest::~ReservationRequest(){
 }
+
+int ReservationRequest::getStartHour() {
+    return start_hour;
+}
+
+int ReservationRequest::getEndHour() {
+    return end_hour;
+}
+
+int ReservationRequest::getStudentCount() {
+    return student_count;
+}
+
+std::string ReservationRequest::getCourseName() {
+    return course_name;
+}
+
+std::string ReservationRequest::getWeekday() {
+    return weekday;
+}
