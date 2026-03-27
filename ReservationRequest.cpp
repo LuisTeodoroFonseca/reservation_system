@@ -4,6 +4,10 @@ using namespace std;
 #include <string>
 #include "ReservationRequest.hpp"
 
+ReservationRequest::ReservationRequest(){
+    
+}
+
 ReservationRequest::ReservationRequest(std::string course_name, std::string weekday, int start_hour, int end_hour, int student_count){
     this->course_name = course_name;
     this->weekday = weekday;
@@ -33,4 +37,4 @@ std::string ReservationRequest::getCourseName() {
 
 std::string ReservationRequest::getWeekday() {
     return weekday;
-}
+}   

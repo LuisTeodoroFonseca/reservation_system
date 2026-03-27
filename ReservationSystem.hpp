@@ -4,14 +4,19 @@
 #include <string>
 #include "ReservationRequest.hpp"
 
+struct Reservation {
+    ReservationRequest request;
+    int room_id;
+};
+
 class ReservationSystem {
 
 private:
     int room_count;
     int* room_capacities;
-
-    // Estruturas internas escolhidas pelos alunos
-    // para armazenar e gerenciar as reservas, os horários, ...
+    int capacidade;
+    int reservation_count;
+    Reservation* reservations;
 
 public:
 
