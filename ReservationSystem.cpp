@@ -41,10 +41,32 @@ bool ReservationSystem::reserve(ReservationRequest request) {
             reservations[reservation_count].request = request;
             reservations[reservation_count].room_id = room;
             reservation_count++;
-            printf("Reserva feita com sucesso\n");
+            cout << "Reserva feita com sucesso" << endl;
             return true;
         }
     }
-    printf("Não foi possível fazer uma reserva\n");
+    cout << "Não foi possível fazer uma reserva" << endl;
     return false;
+}
+
+bool ReservationSystem::cancel(std::string course_name) {
+    int iterador = 0;
+    for(int i = 0; i < reservation_count; i++) { //passa por cada reserva
+        if(reservations[i].request.getCourseName() == course_name) { //verifica se o nome do curso é igual
+            iterador++;
+            for(int j = i; j < (reservation_count-1); j++) {
+                reservations[j].request = reservations[j+1].request;
+                reservations[j].room_id = reservations[j+1].room_id;
+            }
+            reservation_count--;
+        }
+    }
+    if(iterador == 0) {
+        cout << "Não existe disciplina com esse nome" << endl;
+        return false;
+    }
+    else {
+        cout << "Aula cancelada com sucesso" << endl;
+        return true;
+    }
 }
