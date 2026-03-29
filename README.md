@@ -6,10 +6,10 @@ Um usuário pode solicitar a reserva de uma sala em um determinado dia e horári
 Certifique-se de ter um compilador c++ instalado. 
 Para compilar o projeto, digite no terminal:
 
-"g++ main.cpp ReservationRequest.cpp ReservationSystem.cpp -o main"
+"g++ main.cpp ReservationRequest.cpp ReservationSystem.cpp -o programa"
 
 ## Instruções de execução
-Após a compilação, execute: "./main.exe"
+Após a compilação, execute: "./programa.exe"
 
 ## Estrutura dos dados
 Seja N o número de salas total, as salas foram numeradas de 0, 1, 2,..., N. Foi criada uma struct Reservation que contém uma variável do tipo ReservationRequest e um inteiro correspondente ao room_id (número da sala). Todas as reservas foram armazenadas em um array dinâmico reservations do tipo Reservation. Foi utilizado a variável do tipo int reservation_count para saber quantas reservas foram feitas.
