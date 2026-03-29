@@ -129,7 +129,7 @@ void ReservationSystem::printSchedule(){
     for(int i = 0; i < reservation_count; i++){
 
         if(i >= 1){
-            
+
             if(reservations[i].room_id == reservations[i - 1].room_id){
 
                 if(reservations[i].request.getWeekday() == reservations[i - 1].request.getWeekday()){
@@ -151,10 +151,14 @@ void ReservationSystem::printSchedule(){
                 }
         }
         else{
+            cout << endl;
+            cout << "---------------------------- GRADE DE HORÁRIOS ----------------------------" << endl;
             cout << "Room " << reservations[i].room_id << endl;
             cout << reservations[i].request.getWeekday() << ":" << endl;
             cout << reservations[i].request.getCourseName() << ": " << reservations[i].request.getStartHour() << "h~" << reservations[i].request.getEndHour() << "h" << endl;
         }
     }
+    cout << "---------------------------------------------------------------------------";
+    cout << endl;
         
 }

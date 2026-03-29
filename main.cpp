@@ -33,7 +33,10 @@ int main() {
     // --- Sexta-Feira ---
     ReservationRequest reserva12 {"teoria da probabilidade", "sexta", 11, 13, 45};
     ReservationRequest reserva13 {"visao computacional", "sexta", 16, 18, 20};
-    
+
+    // Reserva sem disponibilidade
+    ReservationRequest reserva14 {"teoria da probabilidade", "sexta", 11, 13, 45};
+
     sistema.reserve(reserva1);
     sistema.reserve(reserva2);
     sistema.reserve(reserva3);
@@ -47,9 +50,13 @@ int main() {
     sistema.reserve(reserva11);
     sistema.reserve(reserva12);
     sistema.reserve(reserva13);
+    sistema.reserve(reserva14);
+
     sistema.printSchedule();
-    sistema.cancel("calculo");
-    sistema.cancel("al");
+
+    sistema.cancel("teoria da probabilidade");
+
+    sistema.printSchedule();
 
     return 0;
 }
