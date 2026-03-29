@@ -1,10 +1,13 @@
 #include <iostream>
+#include <windows.h>
 using namespace std;
 
 #include "ReservationRequest.hpp"
 #include "ReservationSystem.hpp"
 
 int main() {
+    SetConsoleOutputCP(CP_UTF8);
+
     int room_count = 3;
     int room_capacities[room_count] = {30, 40, 50};
     ReservationSystem sistema {room_count, room_capacities};

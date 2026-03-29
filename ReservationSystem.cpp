@@ -5,6 +5,7 @@ using namespace std;
 #include "ReservationSystem.hpp"
 #include "ReservationRequest.hpp"
 
+
 ReservationSystem::ReservationSystem(int room_count, int* room_capacities){
     this->room_count = room_count;
     this->room_capacities = new int[room_count];
@@ -126,10 +127,30 @@ void ReservationSystem::printSchedule(){
     ordenarReservations();
 
     for(int i = 0; i < reservation_count; i++){
-        cout << reservations[i].room_id << endl;
-        cout << reservations[i].request.getWeekday() << endl;
-        cout << reservations[i].request.getCourseName() << endl;
-        cout << reservations[i].request.getStartHour() << "h~" << reservations[i].request.getEndHour() << "h" << endl;
+        if(i >= 1){
+            if(reservations[i].room_id == reservations[i - 1].room_id){
+                if(reservations[i].request.getWeekday() == reservations[i - 1].request.getWeekday()){
+                    cout << reservations[i].request.getCourseName() << ": " << reservations[i].request.getStartHour() << "h~" << reservations[i].request.getEndHour() << "h" << endl;
+                }
+                else{
+                    cout << endl;
+                    cout << reservations[i].request.getWeekday() << ":" << endl;
+                    cout << reservations[i].request.getCourseName() << ": " << reservations[i].request.getStartHour() << "h~" << reservations[i].request.getEndHour() << "h" << endl;
+                }
+            }
+            else{
+                cout << endl;
+                cout << "Room " << reservations[i].room_id << endl;
+                cout << reservations[i].request.getWeekday() << ":" << endl;
+                cout << reservations[i].request.getCourseName() << ": " << reservations[i].request.getStartHour() << "h~" << reservations[i].request.getEndHour() << "h" << endl;
+
+                }
+        }
+        else{
+            cout << "Room " << reservations[i].room_id << endl;
+            cout << reservations[i].request.getWeekday() << ":" << endl;
+            cout << reservations[i].request.getCourseName() << ": " << reservations[i].request.getStartHour() << "h~" << reservations[i].request.getEndHour() << "h" << endl;
+        }
     }
         
 }
