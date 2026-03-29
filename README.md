@@ -6,10 +6,10 @@ Um usuário pode solicitar a reserva de uma sala em um determinado dia e horári
 Certifique-se de ter um compilador c++ instalado. 
 Para compilar o projeto, digite no terminal:
 
-"g++ main.cpp ReservationSystem.cpp ReservationRequest.cpp -o reservation_system"
+`g++ main.cpp ReservationSystem.cpp ReservationRequest.cpp -o reservation_system`
 
 ## Instruções de execução
-Após a compilação, execute: ".\reservation_system"
+Após a compilação, execute: `.\reservation_system`
 
 ## Estrutura dos dados
 <!-- Seja N o número de salas total, as salas foram numeradas de 0, 1, 2,..., N. Foi criada uma struct Reservation que contém uma variável do tipo ReservationRequest e um inteiro correspondente ao room_id (número da sala). Todas as reservas foram armazenadas em um array dinâmico reservations do tipo Reservation. Foi utilizado a variável do tipo int reservation_count para saber quantas reservas foram feitas. -->
@@ -40,4 +40,4 @@ Por esse motivo, foi criada uma struct `Reservation` que contém uma variável `
 - end_hour
 - student_count 
 
-e uma variável room_id, que depois de passar pelo processo de validação do sistema, é atribuído ao índice da sala correspondente no array `room_capacities`.
+e uma variável `room_id`, que depois de passar pelo processo de validação do sistema, é atribuído ao índice da sala correspondente no array `room_capacities`.
