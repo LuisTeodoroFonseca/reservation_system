@@ -81,7 +81,7 @@ int dia_to_num(string dia){
         return 2;
     }else if(dia == "quinta"){
         return 3;
-    }else if(dia == "sexta"){
+    }else {
         return 4;
     }
 }
@@ -126,7 +126,7 @@ void ReservationSystem::printSchedule(){
 
     ordenarReservations();
 
-    for(int i = 0; i < reservation_count; i++){
+    for(int i = 0; i < reservation_count - 1; i++){
 
         if(i >= 1){
 
