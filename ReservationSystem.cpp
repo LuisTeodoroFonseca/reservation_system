@@ -54,16 +54,17 @@ bool ReservationSystem::cancel(std::string course_name) {
     int iterador = 0;
     for(int i = 0; i < reservation_count; i++) { //passa por cada reserva
         if(reservations[i].request.getCourseName() == course_name) { //verifica se o nome do curso é igual
-            iterador++;
-            for(int j = i; j < (reservation_count-1); j++) {
+            iterador++; //iterador para contar se existe um curso com esse nome
+            for(int j = i; j < (reservation_count-1); j++) { //aqui nós andamos todos os cursos uma casa para a esquerda e passamos o curso que queremos cancelar para a última posição conhecida do array
                 reservations[j].request = reservations[j+1].request;
-                reservations[j].room_id = reservations[j+1].room_id;
+                reservations[j].room_id = reservations[j+1].room_id; //realizamos as trocas dois a dois
             }
-            reservation_count--;
-            i--;
+            reservation_count--; //diminuimos em uma unidade a quantidade de reservas, fazendo com que não seja necessário apagar a reserva cancelada porque agora na próxima reserva feita, ela será sobreescrita
+            //e se não tiver próxima reserva feita, ela ficará lá mas não será utilizada porque diminuimos o reservation_count, que é o valor até onde utilizamos o array reservations
+            i--; //voltamos uma iteração porque andamos todas as reservas uma posição a menos no array
         }
     }
-    if(iterador == 0) {
+    if(iterador == 0) { //verifica se algum cancelamento foi feito
         cout << "Não existe disciplina com esse nome" << endl;
         return false;
     }
@@ -87,7 +88,7 @@ int dia_to_num(string dia){
     }
 }
 
-void ReservationSystem::ordenarReservations(){
+void ReservationSystem::ordenarReservations(){ //bubble sort para ordenar o array reservations
 
     for(int i = 0; i < reservation_count - 1; i++){
         
