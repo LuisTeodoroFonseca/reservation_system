@@ -26,6 +26,7 @@ public:
     bool reserve(ReservationRequest request);
     bool cancel(std::string course_name);
 
+    void ordenarReservations();
     void printSchedule();
 
     // Outros métodos utilitários necessários

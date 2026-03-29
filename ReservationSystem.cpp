@@ -70,3 +70,66 @@ bool ReservationSystem::cancel(std::string course_name) {
         return true;
     }
 }
+
+int dia_to_num(string dia){
+    if(dia == "segunda"){
+        return 0;
+    }else if(dia == "terça"){
+        return 1;
+    }else if(dia == "quarta"){
+        return 2;
+    }else if(dia == "quinta"){
+        return 3;
+    }else if(dia == "sexta"){
+        return 4;
+    }
+}
+
+void ReservationSystem::ordenarReservations(){
+
+    for(int i = 0; i < reservation_count - 1; i++){
+        
+        for(int j = 0; j < reservation_count - 1 - i; j++){
+            bool troca = false;
+
+            if(reservations[j+1].room_id < reservations[j].room_id){
+            troca = true;
+            }
+            
+            else if(reservations[j+1].room_id == reservations[j].room_id){
+                if(dia_to_num(reservations[j+1].request.getWeekday()) < dia_to_num(reservations[j].request.getWeekday())){
+                troca = true;
+                }
+            
+
+                else if(dia_to_num(reservations[j+1].request.getWeekday()) == dia_to_num(reservations[j].request.getWeekday())){
+                    if(reservations[j+1].request.getStartHour() < reservations[j].request.getStartHour()){
+                troca = true;
+                    }
+                }
+            }
+
+            if(troca == true){
+                Reservation res = reservations[j];
+                reservations[j] = reservations[j+1];
+                reservations[j+1] = res;
+            }
+
+        }
+    }
+}
+
+
+
+void ReservationSystem::printSchedule(){
+
+    ordenarReservations();
+
+    for(int i = 0; i < reservation_count; i++){
+        cout << reservations[i].room_id << endl;
+        cout << reservations[i].request.getWeekday() << endl;
+        cout << reservations[i].request.getCourseName() << endl;
+        cout << reservations[i].request.getStartHour() << "h~" << reservations[i].request.getEndHour() << "h" << endl;
+    }
+        
+}
