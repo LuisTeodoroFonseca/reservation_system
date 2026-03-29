@@ -60,6 +60,7 @@ bool ReservationSystem::cancel(std::string course_name) {
                 reservations[j].room_id = reservations[j+1].room_id;
             }
             reservation_count--;
+            i--;
         }
     }
     if(iterador == 0) {
@@ -123,11 +124,9 @@ void ReservationSystem::ordenarReservations(){
 
 
 void ReservationSystem::printSchedule(){
-
     ordenarReservations();
 
-    for(int i = 0; i < reservation_count - 1; i++){
-
+    for(int i = 0; i < reservation_count; i++){
         if(i >= 1){
 
             if(reservations[i].room_id == reservations[i - 1].room_id){
