@@ -1,7 +1,7 @@
 #include <iostream>
-#include <stdexcept>
 using namespace std;
 
+#include <string>
 #include "ReservationSystem.hpp"
 #include "ReservationRequest.hpp"
 
@@ -9,9 +9,6 @@ using namespace std;
 ReservationSystem::ReservationSystem(int room_count, int* room_capacities){
     this->room_count = room_count;
     this->room_capacities = new int[room_count];
-    if (room_count != (sizeof(room_capacities)/sizeof(room_capacities[0]))) {
-        throw std::invalid_argument("O número de salas é diferente do número de capacidades passado"); //tratamento de erro
-    }
     for(int i = 0; i < room_count; i++) {
         this->room_capacities[i] = room_capacities[i];
     }
@@ -93,9 +90,9 @@ int dia_to_num(string dia){
 
 void ReservationSystem::ordenarReservations(){ //bubble sort para ordenar o array reservations
 
-    for(int i = 0; i < reservation_count - 1; i++){
+    for(int i = 0; i < reservation_count - 1; i++){//Passa por todos os elementos do array
         
-        for(int j = 0; j < reservation_count - 1 - i; j++){
+        for(int j = 0; j < reservation_count - 1 - i; j++){//Compara com todos menos aqueles que já foram verificados
             bool troca = false;
 
             if(reservations[j+1].room_id < reservations[j].room_id){ //Compara o id das das salas
@@ -130,8 +127,8 @@ void ReservationSystem::ordenarReservations(){ //bubble sort para ordenar o arra
 void ReservationSystem::printSchedule(){
     ordenarReservations();
 
-    for(int i = 0; i < reservation_count; i++){
-        if(i >= 1){
+    for(int i = 0; i < reservation_count; i++){//Passa por todos os elementos do array ordenado reservations
+        if(i >= 1){//Queremos comparar com o anterior, por isso começamos a partir do segundo aqui
 
             if(reservations[i].room_id == reservations[i - 1].room_id){
 
@@ -153,7 +150,7 @@ void ReservationSystem::printSchedule(){
 
                 }
         }
-        else{
+        else{//O primeiro não precisa ser comparado porque o array está ordenado
             cout << endl;
             cout << "---------------------------- GRADE DE HORÁRIOS ----------------------------" << endl;
             cout << "Room " << reservations[i].room_id << endl;
