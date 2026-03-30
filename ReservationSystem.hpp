@@ -1,7 +1,6 @@
 #ifndef RESERVATION_SYSTEM_HPP
 #define RESERVATION_SYSTEM_HPP
 
-#include <string>
 #include "ReservationRequest.hpp"
 
 struct Reservation {

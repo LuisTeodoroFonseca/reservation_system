@@ -11,7 +11,6 @@ int main() {
     int room_count = 3;
     int room_capacities[room_count] = {30, 40, 50};
     ReservationSystem sistema {room_count, room_capacities};
-    
     // --- Segunda-Feira ---
     ReservationRequest reserva1 {"estruturas de dados", "segunda", 7, 9, 40};
     ReservationRequest reserva2 {"tecnicas e algoritmos", "segunda", 9, 11, 35};
