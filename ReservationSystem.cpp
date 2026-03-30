@@ -95,18 +95,18 @@ void ReservationSystem::ordenarReservations(){ //bubble sort para ordenar o arra
         for(int j = 0; j < reservation_count - 1 - i; j++){
             bool troca = false;
 
-            if(reservations[j+1].room_id < reservations[j].room_id){
+            if(reservations[j+1].room_id < reservations[j].room_id){ //Compara o id das das salas
             troca = true;
             }
             
             else if(reservations[j+1].room_id == reservations[j].room_id){
-                if(dia_to_num(reservations[j+1].request.getWeekday()) < dia_to_num(reservations[j].request.getWeekday())){
+                if(dia_to_num(reservations[j+1].request.getWeekday()) < dia_to_num(reservations[j].request.getWeekday())){ //Compara os dias da semana
                 troca = true;
                 }
             
 
                 else if(dia_to_num(reservations[j+1].request.getWeekday()) == dia_to_num(reservations[j].request.getWeekday())){
-                    if(reservations[j+1].request.getStartHour() < reservations[j].request.getStartHour()){
+                    if(reservations[j+1].request.getStartHour() < reservations[j].request.getStartHour()){ //Compara os horários de início
                 troca = true;
                     }
                 }
